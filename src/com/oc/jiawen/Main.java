@@ -2,17 +2,69 @@ package com.oc.jiawen;
 
 import java.io.*;
 import java.util.Properties;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-	    //setProperties();
-	    getProperties();
+        // Initier notre paramétrage modeDev = true
+        setProperties();
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Pour activer le mode Développeur, tappez 1, sinon d'autres chiffres");
+
+        // Pour modifier le paramétrage du modeDev, l'utilisateur saisit 1 ou les autres réponses
+        int isDevInt=sc.nextInt();
+        String isDevString ="";
+        if(isDevInt!=1){
+            isDevString = "false";
+        }else {
+            isDevString="true";
+        }
+        sc.close();
+
+        //Modifier config.properties avec le modeDev saisie par l'utilisateur
+        updateModeDev(isDevString);
+
+        //afficher tous nos paramétrages
+	    displayProperties();
     }
 
-    private static void getProperties() {
-        boolean modeDevBool;
-        int nbDigitInt, nbRoundInt;
+    /**
+     * l'utilisateur met à jour le modeDev dans le ficher config.properties
+     * @param modeDevString
+     */
+    private static void updateModeDev(String modeDevString) {
+        Boolean modeDevBool = Boolean.valueOf(modeDevString);
+        Properties props = new Properties();
+        FileInputStream in = null;
+        try {
+            in = new FileInputStream("config.properties");
+            props.load(in);
+            in.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Oops, on n'arrive pas à trouver le fichier config.properties");
+        } catch (IOException e) {
+            System.out.println("Oops, on n'arrive pas à télécharger le fichier config.properties!"); 
+        }
+
+        FileOutputStream out = null;
+        try {
+            out = new FileOutputStream("config.properties");
+            props.setProperty("modeDeveloper", String.valueOf(modeDevBool));
+            props.store(out, null);
+            out.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Oops, on n'arrive pas à trouver le fichier config.properties");
+        } catch (IOException e) {
+            System.out.println("Oops, on n'arrive pas à télécharger le fichier config.properties!");
+        }
+    }
+
+    /**
+     * On affiche tous les paramétrages indiqués dans config.properties.
+     */
+    private static void displayProperties() {
 
         try {
             InputStream inputConfigFile = new FileInputStream("config.properties");
@@ -36,6 +88,9 @@ public class Main {
 
     }
 
+    /**
+     * On met les paramétrages initiaux dans config.properties.
+     */
     private static void setProperties() {
         Properties properties = new Properties();
         properties.setProperty("project-name", "EscapeGame");
