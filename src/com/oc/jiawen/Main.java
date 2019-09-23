@@ -13,6 +13,9 @@ public class Main {
         guessSecretNb();
     }
 
+    /**
+     * Simuler le mode Challenger
+     */
     private static void guessSecretNb() {
         System.out.println("Devinez la combinaison secréte en 4 chiffres.");
         Scanner sc = new Scanner(System.in);
