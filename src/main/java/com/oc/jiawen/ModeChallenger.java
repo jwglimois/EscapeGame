@@ -5,24 +5,6 @@ import java.util.Scanner;
 
 public class ModeChallenger extends PlayMode {
     public static void main(String[] args) {
-        /*
-        String compt ="";
-        int i=0;
-        do{
-            compt= compt+"a";
-            i++;
-        }while(i<4);
-        System.out.println(compt);
-         if(compt.contains("aaaa")){
-
-             System.out.println("C'est bon, length compte: "+compt.length());
-
-         }else{
-             System.out.println("KO length compte: "+compt.length());
-         }
-
-         */
-
 
         ModeChallenger mc = new ModeChallenger();
         mc.askSecretNb();
