@@ -9,8 +9,10 @@ import static java.lang.String.*;
 public class Main {
 
     public static void main(String[] args) {
-        askDevMode();
-        guessSecretNb();
+        //askDevMode();
+        //guessSecretNb();
+        ModeChallenger modeChallenger = new ModeChallenger();
+        modeChallenger.runGame();
     }
 
     /**
