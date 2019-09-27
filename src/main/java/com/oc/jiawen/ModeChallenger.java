@@ -7,8 +7,7 @@ public class ModeChallenger extends PlayMode {
     public static void main(String[] args) {
 
         ModeChallenger mc = new ModeChallenger();
-        mc.askSecretNb();
-
+        //mc.askDevMode();
 
     }
 
@@ -47,6 +46,7 @@ public class ModeChallenger extends PlayMode {
             System.out.println("la variable de winOrLose is_"+winOrLose);
             nbRound++;
         }while(!winOrLose.contains("====") && nbRound<10);
+
         if(winOrLose.contains("====")){
             System.out.println("Bravo! Vous avez gagné en "+ nbRound + " tour(s)." );
         }else{
