@@ -2,33 +2,17 @@ package com.oc.jiawen;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Scanner;
+
 public class InputChecker {
 
     public static void main(String[] args) {
 
         InputChecker ic = new InputChecker();
-        String str=ic.compareInput(1, 2);
-        System.out.println("Notre resultat est :" + str);
+        ic.checkIfOneOrZero();
     }
 
-    private int nbOneDigit;
-    private int[] nbFourDigit = new int[4];
 
-    public int getNbOneDigit() {
-        return nbOneDigit;
-    }
-    public void setNbOneDigit(int nbOneDigit) {
-        this.nbOneDigit = nbOneDigit;
-    }
-
-    public int[] getNbFourDigit() {
-        if(nbFourDigit.length==4){
-            return nbFourDigit;
-        }else{
-            System.out.println("Length is :"+nbFourDigit.length);
-            return nbFourDigit;
-        }
-    }
 
     /**
      * Vérifier si les chiffres saisies sont bien en nombre entier.
@@ -73,14 +57,48 @@ public class InputChecker {
             return "+";
         }
     }
-    public void setNbFourDigit(int[] nbFourDigit) {
-        this.nbFourDigit = nbFourDigit;
+
+    public void checkIfOneOrZero(){
+        String nbStr;
+        do{
+            System.out.println("Saisir 1 pour Oui, 0 pour Non.");
+            Scanner sc = new Scanner(System.in);
+            nbStr = sc.next();
+
+            System.out.println("Vous avez saisir:"+nbStr);
+            System.out.println("Longeur est:"+nbStr.length());
+
+        }while(!isValidInputOneOrZero(nbStr));
+
     }
 
-    public void checkInputLengthBeFour(){
+    /**
+     *
+     * @param input La saisie d'utilisateur qui doit être soit 1 soit 0.
+     * @return boolean - Si la saisie est validé, on retourne true.
+     */
+    public boolean isValidInputOneOrZero(String input)
+    {
+        // La longeur doit être 1
+        if(input.length() != 1)
+            return false;
 
+        // Si c'est un nombre entier
+        try
+        {
+            Integer i = Integer.parseInt(input);
+            if(i>1)
+                return false;
+        }
+        catch(NumberFormatException e)
+        {
+            return false;
+        }
 
+        // Tous les arguments précédents sont passés, la saisie est donc validée.
+        return true;
     }
+
 
 
 

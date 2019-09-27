@@ -7,12 +7,6 @@ class InputCheckerTest {
 
 
     @Test
-    void Given_Input_LengthShouldBeFour(){
-        InputChecker inputChecker = new InputChecker();
-        assertEquals(4,inputChecker.getNbFourDigit().length );
-    }
-
-    @Test
     void Given_nbString_IfSucceedConvertToInt_ThenGetTrue() {
         InputChecker inputChecker = new InputChecker();
         assertTrue(inputChecker.nbStringConvertToInt("1234"));
@@ -41,4 +35,13 @@ class InputCheckerTest {
         InputChecker inputChecker = new InputChecker();
         assertEquals("+" ,inputChecker.compareInput(1,2) );
     }
+
+
+    @Test
+    void Given_InputStringOneorZero_WhenIsValide_ThenGetTrue() {
+        InputChecker inputChecker = new InputChecker();
+        assertTrue(inputChecker.isValidInputOneOrZero("1"));
+        assertTrue(inputChecker.isValidInputOneOrZero("0"));
+    }
+
 }

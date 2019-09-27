@@ -20,13 +20,13 @@ public abstract class PlayMode {
     }
 
 
-    private static final List<String> STRINGS = List.of("Quitter", "Mode Challenger", "Mode Defenseur", "Mode duel");
+    private static final List<String> TROISMODES = List.of("Mode Challenger", "Mode Defenseur", "Mode duel");
 
     public void runGame(){
-        displayGameRules();
+        informGameRules();
         askSecretNb();
     }
-    public void displayGameRules(){
+    public void informGameRules(){
         System.out.println("Devinez la combinaison secréte en 4 chiffres. 10 fois d'essai possible.");
     }
     public abstract void askSecretNb();
@@ -142,5 +142,12 @@ public abstract class PlayMode {
         } catch (IOException e) {
             System.out.println("Oops, on n'arrive pas à télécharger le fichier config.properties!");
         }
+    }
+
+    protected void askPlayOrNot(){
+        InputChecker ic = new InputChecker();
+        System.out.println("Voulez-vous jouer encore? ");
+
+
     }
 }

@@ -8,6 +8,8 @@ public class ModeChallenger extends PlayMode {
 
         ModeChallenger mc = new ModeChallenger();
         //mc.askDevMode();
+        //mc.askSecretNb();
+        mc.askPlayOrNot();
 
     }
 
@@ -18,10 +20,16 @@ public class ModeChallenger extends PlayMode {
         InputChecker inputChecker = new InputChecker();
         Scanner sc = new Scanner(System.in);
 
-        String inputStr;
+        String inputStr="";
         String winOrLose="";
         int nbRound=0;
         int[] tabRandom = attackerComputer.giveRandomNb();
+
+        guessInLoop(attackerHuman, attackerComputer, inputChecker, sc, inputStr, winOrLose, nbRound, tabRandom);
+
+    }
+
+    public void guessInLoop(Human attackerHuman, Computer attackerComputer, InputChecker inputChecker, Scanner sc, String inputStr, String winOrLose, int nbRound,int[] tabRandom){
         do {
             //Vérifier si la taille de saisie est bien 4
             do {

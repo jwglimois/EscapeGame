@@ -3,9 +3,11 @@ package com.oc.jiawen;
 public class Human extends Player{
 
     public static void main(String[] args) {
+
         Human h = new Human();
-        int[] tabTest=h.replyFourDigit("1234");
-        System.out.println("Notre tab est :" + tabTest[0]);
+        InputChecker ic = h.getInputChecker();
+        ic.compareInput(2,1);
+
     }
 
     /**
@@ -23,7 +25,7 @@ public class Human extends Player{
        if(ic.nbStringConvertToInt(myString)){
            tbInputIn=ic.nbStrConvertToTabInt(myString);
        }else{
-           System.out.println("Erreurs!");
+           System.out.println("Erreur de mettre les chiffres dans le tableau!");
        }
 
        return tbInputIn;

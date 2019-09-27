@@ -1,6 +1,7 @@
 package com.oc.jiawen;
 
 public abstract class Player {
+
     public InputChecker getInputChecker() {
         return inputChecker;
     }
