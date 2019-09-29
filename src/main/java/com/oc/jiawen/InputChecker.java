@@ -9,7 +9,8 @@ public class InputChecker {
     public static void main(String[] args) {
 
         InputChecker ic = new InputChecker();
-        ic.checkIfOneOrZero();
+        int monChiffre = ic.checkInputNextPlayMode();
+        System.out.println("Mon next mode est :"+ monChiffre);
     }
 
 
@@ -58,46 +59,63 @@ public class InputChecker {
         }
     }
 
-    public void checkIfOneOrZero(){
+    /**
+     * Vérifier si la saisie de l'utilisateur est bien 1 ou 0.
+     * @return La valeur de retour doit être un entier, soit 1 soit 0.
+     */
+    public int checkInputOneOrZero(){
         String nbStr;
         do{
-            System.out.println("Saisir 1 pour Oui, 0 pour Non.");
+            System.out.println("Saisir 1 pour Oui ; 0 pour Non");
             Scanner sc = new Scanner(System.in);
             nbStr = sc.next();
+            System.out.println("Vous avez saisi: " + nbStr);
+        }while(!nbStr.equals("0") && !nbStr.equals("1"));
 
-            System.out.println("Vous avez saisir:"+nbStr);
-            System.out.println("Longeur est:"+nbStr.length());
 
-        }while(!isValidInputOneOrZero(nbStr));
+        int nbInt;
+        try {
+            nbInt = Integer.parseInt(nbStr);
+            return nbInt;
+        } catch (NumberFormatException e) {
+            System.out.println("Erreur de convertir une chaine de caractères en nombre entier!!");
+            return nbInt=0;
+        }
 
     }
 
     /**
-     *
-     * @param input La saisie d'utilisateur qui doit être soit 1 soit 0.
-     * @return boolean - Si la saisie est validé, on retourne true.
+     * Vérifier si la saisie de l'utilisateur est bien 1 ou 2 ou 3.
+     * @return La valeur de retour doit être un entier. Seulement 3 possibilité: 1, 2, ou 3.
      */
-    public boolean isValidInputOneOrZero(String input)
-    {
-        // La longeur doit être 1
-        if(input.length() != 1)
-            return false;
 
-        // Si c'est un nombre entier
-        try
-        {
-            Integer i = Integer.parseInt(input);
-            if(i>1)
-                return false;
-        }
-        catch(NumberFormatException e)
-        {
-            return false;
-        }
+    public int checkInputNextPlayMode(){
+        int nbInt=0;
+        boolean isNb = true;
+        Scanner input = new Scanner(System.in);
 
-        // Tous les arguments précédents sont passés, la saisie est donc validée.
-        return true;
+        do{
+            System.out.println("Seulement 3 possibilités: 1, 2, ou 3.");
+            if(!input.hasNextInt()){
+                System.out.println("Vous devez saisir un chiffre!!");
+                input.next();
+                isNb=false;
+            }else{
+                nbInt= input.nextInt();
+                if(nbInt<=3 && nbInt>=1){
+                    isNb=true;
+                }else{
+                    System.out.println("Votre saisie n'entre pas dans les réponses possibles (1,2, ou 3).");
+                    isNb=false;
+                }
+            }
+        }while(!(isNb));
+        return nbInt;
     }
+
+
+
+
 
 
 

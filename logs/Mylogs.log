@@ -1,11 +1,6 @@
-[DEBUG] 2019-09-26 23:49:44.307 [main] Log4jDriver - This is a debug message.
-[INFO ] 2019-09-26 23:49:44.312 [main] Log4jDriver - This is information message.
-[WARN ] 2019-09-26 23:49:44.312 [main] Log4jDriver - This is a warning message.
-[ERROR] 2019-09-26 23:49:44.313 [main] Log4jDriver - This is an error message.
-[FATAL] 2019-09-26 23:49:44.313 [main] Log4jDriver - This is a fatal message.
-[TRACE] 2019-09-26 23:51:04.045 [main] Log4jDriver - This is a trace message.
-[DEBUG] 2019-09-26 23:51:04.048 [main] Log4jDriver - This is a debug message.
-[INFO ] 2019-09-26 23:51:04.051 [main] Log4jDriver - This is information message.
-[WARN ] 2019-09-26 23:51:04.051 [main] Log4jDriver - This is a warning message.
-[ERROR] 2019-09-26 23:51:04.051 [main] Log4jDriver - This is an error message.
-[FATAL] 2019-09-26 23:51:04.051 [main] Log4jDriver - This is a fatal message.
+[TRACE] 2019-09-27 17:45:52.573 [main] Log4jDriver - This is a trace message.
+[DEBUG] 2019-09-27 17:45:52.585 [main] Log4jDriver - This is a debug message.
+[INFO ] 2019-09-27 17:45:52.585 [main] Log4jDriver - This is information message.
+[WARN ] 2019-09-27 17:45:52.585 [main] Log4jDriver - This is a warning message.
+[ERROR] 2019-09-27 17:45:52.585 [main] Log4jDriver - This is an error message.
+[FATAL] 2019-09-27 17:45:52.585 [main] Log4jDriver - This is a fatal message.

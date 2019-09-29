@@ -10,26 +10,26 @@ import static java.lang.String.valueOf;
 
 public abstract class PlayMode {
 
+    private Human utilisateur = new Human();
 
-    private String role;
-    private boolean devMode;
-
-    private InputChecker inputChecker;
-    public InputChecker getInputChecker() {
-        return inputChecker;
+    protected Human getUtilisateur() {
+        return utilisateur;
     }
-
+    private boolean devMode;
 
     private static final List<String> TROISMODES = List.of("Mode Challenger", "Mode Defenseur", "Mode duel");
 
-    public void runGame(){
+    protected boolean runGame(){
+        askDevMode();
         informGameRules();
         askSecretNb();
+        boolean reply = askPlayOrNot();
+        return reply;
     }
-    public void informGameRules(){
+    protected void informGameRules(){
         System.out.println("Devinez la combinaison secréte en 4 chiffres. 10 fois d'essai possible.");
     }
-    public abstract void askSecretNb();
+    protected abstract void askSecretNb();
 
     /**
      * L'utilisateur doit décider s'il veut activer le mode Développeur ou pas
@@ -144,10 +144,26 @@ public abstract class PlayMode {
         }
     }
 
-    protected void askPlayOrNot(){
-        InputChecker ic = new InputChecker();
+    /**
+     * Demander à l'utilisateur s'il veut encore jouer encore ou pas. 1 pour Oui et 0 pour Non.
+     */
+    protected boolean askPlayOrNot(){
+        Human utilisateur = this.getUtilisateur();
         System.out.println("Voulez-vous jouer encore? ");
-
+        InputChecker myInputChecker = utilisateur.getInputChecker();
+        int reply = myInputChecker.checkInputOneOrZero();
+        if(reply==1){
+            return true;
+        }else{
+            return false;
+        }
 
     }
+
+
+
+
+
+
+
 }

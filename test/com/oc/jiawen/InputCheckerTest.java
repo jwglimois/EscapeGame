@@ -37,11 +37,4 @@ class InputCheckerTest {
     }
 
 
-    @Test
-    void Given_InputStringOneorZero_WhenIsValide_ThenGetTrue() {
-        InputChecker inputChecker = new InputChecker();
-        assertTrue(inputChecker.isValidInputOneOrZero("1"));
-        assertTrue(inputChecker.isValidInputOneOrZero("0"));
-    }
-
 }

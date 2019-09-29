@@ -2,12 +2,20 @@ package com.oc.jiawen;
 
 public class Human extends Player{
 
+
     public static void main(String[] args) {
+
 
         Human h = new Human();
         InputChecker ic = h.getInputChecker();
-        ic.compareInput(2,1);
 
+
+        /*
+        InputChecker ic= new InputChecker();
+        String result = ic.compareInput(2,1);
+        System.out.println("Mon resultat est :"+ result);
+
+         */
     }
 
     /**

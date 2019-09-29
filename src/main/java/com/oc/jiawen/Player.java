@@ -10,6 +10,6 @@ public abstract class Player {
         this.inputChecker = inputChecker;
     }
 
-    private InputChecker inputChecker;
+    private InputChecker inputChecker = new InputChecker();
 
 }

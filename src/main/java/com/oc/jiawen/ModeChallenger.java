@@ -5,11 +5,10 @@ import java.util.Scanner;
 
 public class ModeChallenger extends PlayMode {
     public static void main(String[] args) {
+        ModeChallenger mChallenger = new ModeChallenger();
+        mChallenger.runGame();
 
-        ModeChallenger mc = new ModeChallenger();
-        //mc.askDevMode();
-        //mc.askSecretNb();
-        mc.askPlayOrNot();
+
 
     }
 
@@ -17,7 +16,7 @@ public class ModeChallenger extends PlayMode {
     public void askSecretNb() {
         Human attackerHuman = new Human();
         Computer attackerComputer = new Computer();
-        InputChecker inputChecker = new InputChecker();
+        InputChecker inputChecker = attackerHuman.getInputChecker();
         Scanner sc = new Scanner(System.in);
 
         String inputStr="";
@@ -55,7 +54,7 @@ public class ModeChallenger extends PlayMode {
             nbRound++;
         }while(!winOrLose.contains("====") && nbRound<10);
 
-        if(winOrLose.contains("====")){
+        if(winOrLose.equals("====")){
             System.out.println("Bravo! Vous avez gagné en "+ nbRound + " tour(s)." );
         }else{
             if(nbRound==10){
