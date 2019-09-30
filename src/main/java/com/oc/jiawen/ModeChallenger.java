@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class ModeChallenger extends PlayMode {
     public static void main(String[] args) {
         ModeChallenger mChallenger = new ModeChallenger();
-        mChallenger.runGame();
-
+        boolean reply = mChallenger.askPlayOrNot();
+        System.out.println("My reply is: " +reply );
 
 
     }

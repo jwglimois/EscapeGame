@@ -10,11 +10,12 @@ import static java.lang.String.valueOf;
 
 public abstract class PlayMode {
 
-    private Human utilisateur = new Human();
+    private Human user = new Human();
 
-    protected Human getUtilisateur() {
-        return utilisateur;
+    protected Human getUser() {
+        return user;
     }
+
     private boolean devMode;
 
     private static final List<String> TROISMODES = List.of("Mode Challenger", "Mode Defenseur", "Mode duel");
@@ -148,7 +149,7 @@ public abstract class PlayMode {
      * Demander à l'utilisateur s'il veut encore jouer encore ou pas. 1 pour Oui et 0 pour Non.
      */
     protected boolean askPlayOrNot(){
-        Human utilisateur = this.getUtilisateur();
+        Human utilisateur = this.getUser();
         System.out.println("Voulez-vous jouer encore? ");
         InputChecker myInputChecker = utilisateur.getInputChecker();
         int reply = myInputChecker.checkInputOneOrZero();

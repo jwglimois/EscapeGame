@@ -70,6 +70,11 @@ public class InputChecker {
             Scanner sc = new Scanner(System.in);
             nbStr = sc.next();
             System.out.println("Vous avez saisi: " + nbStr);
+            if (nbStr.equals("1")) {
+                System.out.println("Ok, c'est parti, notre nouveau tour!");
+            }else{
+                System.out.println("C'était un plaisir de jouer avec toi. Au revoir!");
+            }
         }while(!nbStr.equals("0") && !nbStr.equals("1"));
 
 
@@ -95,7 +100,7 @@ public class InputChecker {
         Scanner input = new Scanner(System.in);
 
         do{
-            System.out.println("Seulement 3 possibilités: 1, 2, ou 3.");
+            System.out.println("Vous avez seulement 3 possibilités: 1, 2, ou 3.");
             if(!input.hasNextInt()){
                 System.out.println("Vous devez saisir un chiffre!!");
                 input.next();

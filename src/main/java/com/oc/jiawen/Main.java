@@ -3,21 +3,21 @@ package com.oc.jiawen;
 public class Main {
 
     public static void main(String[] args) {
-        int newPlayMode = askNewPlayMode();
-        boolean playOrNot;
+        int newPlayMode;
+        boolean playOrNot=true;
+        ModeChallenger mChallenger = new ModeChallenger();
+        ModeDefender mDefender = new ModeDefender();
+        ModeDuel mDuel = new ModeDuel();
         do {
+            newPlayMode = askNewPlayMode();
             if (newPlayMode == 1) {
-                ModeChallenger mChallenger = new ModeChallenger();
                 playOrNot = mChallenger.runGame();
             } else if (newPlayMode == 2) {
-                ModeDefender mDefender = new ModeDefender();
                 playOrNot = mDefender.runGame();
             } else {
-                ModeDuel mDuel = new ModeDuel();
                 playOrNot = mDuel.runGame();
             }
-
-        } while (!playOrNot);
+        } while (playOrNot);
 
 
     }
