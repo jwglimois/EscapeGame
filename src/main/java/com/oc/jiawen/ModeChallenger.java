@@ -1,60 +1,55 @@
 package com.oc.jiawen;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class ModeChallenger extends PlayMode {
     public static void main(String[] args) {
+/*
         ModeChallenger mChallenger = new ModeChallenger();
-        boolean reply = mChallenger.askPlayOrNot();
-        System.out.println("My reply is: " +reply );
+        mChallenger.askSecretNb();
 
+ */
 
     }
+
+
 
     @Override
     public void askSecretNb() {
         Human attackerHuman = new Human();
-        Computer attackerComputer = new Computer();
+        Computer defenderComputer = new Computer();
         InputChecker inputChecker = attackerHuman.getInputChecker();
-        Scanner sc = new Scanner(System.in);
 
-        String inputStr="";
-        String winOrLose="";
+        String hint="";
         int nbRound=0;
-        int[] tabRandom = attackerComputer.giveRandomNb();
+        int[] tabRandom = defenderComputer.giveRandomNb();
 
-        guessInLoop(attackerHuman, attackerComputer, inputChecker, sc, inputStr, winOrLose, nbRound, tabRandom);
+        guessInLoop(attackerHuman, inputChecker, hint, nbRound, tabRandom);
 
     }
 
-    public void guessInLoop(Human attackerHuman, Computer attackerComputer, InputChecker inputChecker, Scanner sc, String inputStr, String winOrLose, int nbRound,int[] tabRandom){
+    public void guessInLoop(Human attackerHuman, InputChecker inputChecker,  String hint, int nbRound,int[] tabRandom){
         do {
             //Vérifier si la taille de saisie est bien 4
-            do {
-                System.out.println("Saissisez 4 chiffres");
-                inputStr = sc.nextLine();
-
-            } while (inputStr.length() != 4);
+            String inputStr = this.askInput4Digit();
 
             int[] tabInt = attackerHuman.replyFourDigit(inputStr);
             String[] tabHint = new String[4];
             for (int i = 0; i < 4; i++) {
-                tabHint[i] = inputChecker.compareInput(tabInt[i], tabRandom[i]);
+                tabHint[i] = inputChecker.compareInputInt(tabInt[i], tabRandom[i]);
                 if (tabHint[i].equals("=")) {
-                    winOrLose += "=";
+                    hint += "=";
                 }
             }
-            if(winOrLose.length()!=4){
-                winOrLose="";
+            if(hint.length()!=4){
+                hint="";
             }
 
             System.out.println("Proposition : " + inputStr + " -> Réponse: " + Arrays.toString(tabHint));
-            System.out.println("la variable de winOrLose is_"+winOrLose);
             nbRound++;
-        }while(!winOrLose.contains("====") && nbRound<10);
+        }while(!hint.contains("====") && nbRound<10);
 
-        if(winOrLose.equals("====")){
+        if(hint.equals("====")){
             System.out.println("Bravo! Vous avez gagné en "+ nbRound + " tour(s)." );
         }else{
             if(nbRound==10){

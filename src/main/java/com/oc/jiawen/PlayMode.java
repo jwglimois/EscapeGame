@@ -33,6 +33,36 @@ public abstract class PlayMode {
     protected abstract void askSecretNb();
 
     /**
+     * Vérifier si la saisie de l'utilisateur est bien 4 nombres entiers.
+     * @return Si ok, on convertir notre chiffre en String
+     */
+    protected String askInput4Digit(){
+        Scanner sc = new Scanner(System.in);
+        //Vérifier si la taille de saisie est bien 4
+        boolean is4Digit;
+        int inputInt=0;
+        String inputStr = "";
+        do{
+            System.out.println("Saissisez un nombre secrét de 4 chiffres");
+            if (sc.hasNextInt()) {
+                inputInt = sc.nextInt();
+                inputStr=String.valueOf(inputInt);
+                if(inputStr.length()==4){
+                    is4Digit = true;
+                }else{
+                    System.out.println("Vous avez saisi plus ou moins de 4 chiffres.");
+                    is4Digit = false;
+                }
+            } else {
+                System.out.println("Erreur. On ne prend pas compte de caractères!!");
+                is4Digit = false;
+                sc.next();
+            }
+        } while (!(is4Digit));
+        return inputStr;
+    }
+
+    /**
      * L'utilisateur doit décider s'il veut activer le mode Développeur ou pas
      *
      */
@@ -154,8 +184,10 @@ public abstract class PlayMode {
         InputChecker myInputChecker = utilisateur.getInputChecker();
         int reply = myInputChecker.checkInputOneOrZero();
         if(reply==1){
+            System.out.println("Ok, c'est parti, notre nouveau tour!");
             return true;
         }else{
+            System.out.println("C'était un plaisir de jouer avec toi. Au revoir!");
             return false;
         }
 

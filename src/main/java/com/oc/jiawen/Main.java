@@ -3,6 +3,7 @@ package com.oc.jiawen;
 public class Main {
 
     public static void main(String[] args) {
+        /*
         int newPlayMode;
         boolean playOrNot=true;
         ModeChallenger mChallenger = new ModeChallenger();
@@ -19,7 +20,7 @@ public class Main {
             }
         } while (playOrNot);
 
-
+*/
     }
 
     public static int askNewPlayMode(){

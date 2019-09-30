@@ -14,7 +14,6 @@ public class InputChecker {
     }
 
 
-
     /**
      * Vérifier si les chiffres saisies sont bien en nombre entier.
      * @param nbStr String
@@ -49,7 +48,7 @@ public class InputChecker {
      * @param inputDefender int
      * @return les indices en string : = pour équalité ; + pour plus; - pour moins
      */
-    public String compareInput(int inputAttacker, int inputDefender){
+    public String compareInputInt(int inputAttacker, int inputDefender){
         if(inputAttacker == inputDefender){
             return "=";
         }else if(inputAttacker > inputDefender){
@@ -70,11 +69,6 @@ public class InputChecker {
             Scanner sc = new Scanner(System.in);
             nbStr = sc.next();
             System.out.println("Vous avez saisi: " + nbStr);
-            if (nbStr.equals("1")) {
-                System.out.println("Ok, c'est parti, notre nouveau tour!");
-            }else{
-                System.out.println("C'était un plaisir de jouer avec toi. Au revoir!");
-            }
         }while(!nbStr.equals("0") && !nbStr.equals("1"));
 
 
@@ -93,7 +87,6 @@ public class InputChecker {
      * Vérifier si la saisie de l'utilisateur est bien 1 ou 2 ou 3.
      * @return La valeur de retour doit être un entier. Seulement 3 possibilité: 1, 2, ou 3.
      */
-
     public int checkInputNextPlayMode(){
         int nbInt=0;
         boolean isNb = true;
@@ -117,6 +110,17 @@ public class InputChecker {
         }while(!(isNb));
         return nbInt;
     }
+
+    public int compareInputHint(String symbole, int nbIntComputer){
+        if(symbole.equals("+")){
+            nbIntComputer++;
+        }
+        if(symbole.equals("-")) {
+            nbIntComputer--;
+        }
+        return nbIntComputer;
+    }
+
 
 
 
