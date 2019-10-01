@@ -2,7 +2,6 @@ package com.oc.jiawen;
 
 import java.io.*;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -16,9 +15,6 @@ public abstract class PlayMode {
         return user;
     }
 
-    private boolean devMode;
-
-    private static final List<String> TROISMODES = List.of("Mode Challenger", "Mode Defenseur", "Mode duel");
 
     protected boolean runGame(){
         askDevMode();

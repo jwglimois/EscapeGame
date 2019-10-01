@@ -2,14 +2,10 @@ package com.oc.jiawen;
 
 public abstract class Player {
 
+    private InputChecker inputChecker = new InputChecker();
+
     public InputChecker getInputChecker() {
         return inputChecker;
     }
-
-    public void setInputChecker(InputChecker inputChecker) {
-        this.inputChecker = inputChecker;
-    }
-
-    private InputChecker inputChecker = new InputChecker();
 
 }

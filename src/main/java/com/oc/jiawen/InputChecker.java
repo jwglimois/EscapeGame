@@ -1,7 +1,5 @@
 package com.oc.jiawen;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Scanner;
 
 public class InputChecker {
@@ -34,7 +32,7 @@ public class InputChecker {
      * @param nbStr String
      * @return int[]
      */
-    public int[] nbStrConvertToTabInt(@NotNull String nbStr) {
+    public int[] nbStrConvertToTabInt(String nbStr) {
         int[] tabInputInt = new int[nbStr.length()];
         for(int i=0; i<nbStr.length();i++){
             tabInputInt[i]=Integer.parseInt(Character.toString(nbStr.charAt(i)));
