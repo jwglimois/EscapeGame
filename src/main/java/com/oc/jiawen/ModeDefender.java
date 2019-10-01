@@ -6,11 +6,8 @@ public class ModeDefender extends PlayMode {
 
     public static void main(String[] args) {
         ModeDefender md= new ModeDefender();
-        //md.askSecretNb();
-        String[] tabStr = md.askInputHint();
-        for(String i : tabStr){
-            System.out.println(i);
-        }
+        md.askSecretNb();
+
     }
 
     @Override
@@ -18,50 +15,69 @@ public class ModeDefender extends PlayMode {
         Human defenderHuman = new Human();
         Computer attackerComputer = new Computer();
         InputChecker inputChecker = defenderHuman.getInputChecker();
-        String nbComputer="";
         String inputStr = this.askInput4Digit();
-
-
-        int[] tabIntComputer = attackerComputer.giveRandomNb();
-        for(int i = 0; i<tabIntComputer.length ; i++){
-            nbComputer = nbComputer +tabIntComputer[i];
-        }
-        this.guessInLoop(inputStr, nbComputer, inputChecker, tabIntComputer);
-
+        this.guessInLoop(attackerComputer, inputStr, inputChecker);
 
     }
 
 
-    public void guessInLoop(String inputStr, String nbComputer, InputChecker inputChecker, int[] tabIntComputer){
+    public void guessInLoop(Computer attackerComputer, String inputStr, InputChecker inputChecker){
+        boolean stopGame;
+        boolean machineGain;
         int nbRound=0;
+        String strComputer="";
+        int[] tabIntComputer = attackerComputer.giveRandomNb();
+        for(int i = 0; i<tabIntComputer.length ; i++){
+            strComputer = strComputer +tabIntComputer[i];
+        }
         do{
-            System.out.println("[Machine] : Votre nombre secret est-il bien :" + nbComputer +"?");
-            int winOrNot= inputChecker.checkInputOneOrZero();
-            nbRound++;
-            if(winOrNot==1){
-                System.out.println("[Machine]: Yes!! J'ai gagné!!");
-            }else{
-                for(int i=0 ; i<tabIntComputer.length ; i++){
-                    tabIntComputer[i]=Integer.parseInt(Character.toString(nbComputer.charAt(i)));
-                }
-                System.out.println("[Machine]: Peux-tu me donner quelques indices en saisissant 4 symboles? Saisissez '+' pour dire 'plus', '-' pour dire 'moins' et '=' pour 'égal'.");
-            }
-            String[] tabHint = this.askInputHint();
-            nbComputer="";
+            if(!inputStr.equals(strComputer)){
+                if(nbRound<10){
+                    System.out.println("[Machine] : Votre nombre secret est-il bien :" + strComputer +"? Si non, Donnez moi quelques indices. Saisissez '+' pour dire 'plus', '-' pour dire 'moins' et '=' pour 'égal'. ");
+                    for(int i = 0; i<strComputer.length() ; i++){
+                        tabIntComputer[i] = Integer.parseInt(Character.toString(strComputer.charAt(i)));
+                    }
+                    String[] tabHint = this.askInputHint();
 
-            for(int j=0; j<tabIntComputer.length ; j++){
-                int result = inputChecker.compareInputHint(tabHint[j], tabIntComputer[j]);
-                if(result<10 && result>=0){
-                    nbComputer = nbComputer + result;
+                    //On vide strComputer afin de remettre la nouvelle combinaison
+                    strComputer="";
+                    for(int j=0; j<tabIntComputer.length ; j++){
+                        int result = inputChecker.compareInputHint(tabHint[j], tabIntComputer[j]);
+                        if(result<10 && result>=0){
+                            strComputer = strComputer + result;
+                        }else if (result==10){
+                            strComputer = strComputer + 9;
+                        }else{
+                            strComputer = strComputer + 0;
+                        }
+                    }
+                    nbRound++;
+                    stopGame = false;
                 }else{
-                    System.out.println("Vous avez donné les mauvaises indices. Merci de recommencer le jeu ");
-                    System.exit(0);
+                    System.out.println("[Machine] : 10 essais atteints. J'ai perdu.");
+                    stopGame = true;
                 }
-
+                machineGain = false;
+            }else{
+                nbRound++;
+                System.out.println("[Machine] : J'ai trouvé, c'est bien " + strComputer + "? Saisir 1 pour Oui et 0 pour Non.");
+                int confirmWin = inputChecker.checkInputOneOrZero();
+                if(confirmWin ==1){
+                    stopGame=true;
+                }else{
+                    System.out.println("Ah bon? Tu n'as pas triché??");
+                    stopGame=true;
+                }
+                machineGain = true;
             }
+        }while(!(stopGame));
 
-        }while(!inputStr.equals(nbComputer) && nbRound<10);
-        System.out.println("[Machine] : Mince! 10 fois d'essai atteint!!  J'ai perdu!!");
+        System.out.println("La bonne réponse est "+ inputStr + ".");
+
+        if(machineGain){
+            System.out.println("La machine a gagné en " + nbRound + " tours.");
+        }
+
 
     }
 

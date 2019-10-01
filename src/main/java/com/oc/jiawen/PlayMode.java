@@ -30,6 +30,7 @@ public abstract class PlayMode {
     protected void informGameRules(){
         System.out.println("Devinez la combinaison secréte en 4 chiffres. 10 fois d'essai possible.");
     }
+
     protected abstract void askSecretNb();
 
     /**
