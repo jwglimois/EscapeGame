@@ -3,36 +3,32 @@ package com.oc.jiawen;
 public class Main {
 
     public static void main(String[] args) {
+        startGame();
+    }
 
+    /**
+     * startGame() permet à l'utilisateur de démarrer le jeu.
+     */
+    public static void startGame(){
+        Human human = new Human();
         int newPlayMode;
-        boolean playOrNot=true;
+        boolean playAgain;
         ModeChallenger mChallenger = new ModeChallenger();
         ModeDefender mDefender = new ModeDefender();
         ModeDuel mDuel = new ModeDuel();
         do {
-            newPlayMode = askNewPlayMode();
+            mChallenger.display3PlayModes();
+            newPlayMode = human.replyNewPlayMode();
+
             if (newPlayMode == 1) {
-                playOrNot = mChallenger.runGame();
+                playAgain = mChallenger.runGame();
             } else if (newPlayMode == 2) {
-                playOrNot = mDefender.runGame();
+                playAgain = mDefender.runGame();
             } else {
-                playOrNot = mDuel.runGame();
+                playAgain = mDuel.runGame();
             }
-        } while (playOrNot);
-
-
-    }
-
-    public static int askNewPlayMode(){
-        Human utilisateur = new Human();
-        System.out.println("Choisissez votre mode de jeu.");
-        System.out.println("1 pour Mode Challenger. C'est-à-dire que l'utilisateur est l'attaquant, et la machine est le défenseur.");
-        System.out.println("2 pour Mode Défenseur. C'est-à-dire que l'utilisateur est le défenseur, et la machine est l'attaquant'.");
-        System.out.println("3 pour Mode Duel. C'est-à-dire que l'utilisateur et la machine jouent tour à tour'.");
-
-        InputChecker myInputChecker = utilisateur.getInputChecker();
-        int newPlayMode = myInputChecker.checkInputNextPlayMode();
-        return newPlayMode;
+        } while(playAgain);
 
     }
+
 }

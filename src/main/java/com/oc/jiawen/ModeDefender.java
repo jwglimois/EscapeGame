@@ -2,23 +2,28 @@ package com.oc.jiawen;
 
 public class ModeDefender extends PlayMode {
 
-    public static void main(String[] args) {
-        ModeDefender md= new ModeDefender();
-        md.askSecretNb();
-    }
-
+    /**
+     * askSecretNb() est une fonction héritée depuis la classe abstraite. Elle sert à interagir avec l'utilisateur en lui demandant de deviner dans les boucles.
+     */
     @Override
     protected void askSecretNb() {
         Human defenderHuman = new Human();
-        Computer attackerComputer = new Computer();
         InputChecker inputChecker = defenderHuman.getInputChecker();
-        String inputStr = inputChecker.askInput4Digit();
-        this.guessInLoop(attackerComputer, inputStr, inputChecker);
+        String inputStr = inputChecker.checkInput4Digit();
+
+        Computer attackerComputer = new Computer();
+
+        this.guessInLoop(inputChecker , inputStr,  attackerComputer );
 
     }
 
-
-    public void guessInLoop(Computer attackerComputer, String inputStr, InputChecker inputChecker){
+    /**
+     * guessInLoop() permet de juger si l'ordinateur a gagné ou pas en passant plusieurs conditions. En cas de perte, on repasse la devinette jusqu'à ce que 10 tours sont atteints.
+     * @param inputChecker La 1ère valeur d'entrée est un objet de type InputChecker appelé par un objet Human.
+     * @param inputStr La 2ème valeur d'entrée est un String qui contient la saisie de 4 chiffres de l'utilisateur.
+     * @param attackerComputer La 3ème valeur d'entrée est un objet de type Computer.
+     */
+    public void guessInLoop(InputChecker inputChecker, String inputStr, Computer attackerComputer){
         boolean stopGame;
         boolean machineGain;
         int nbRound=0;
@@ -34,7 +39,7 @@ public class ModeDefender extends PlayMode {
                     for(int i = 0; i<strComputer.length() ; i++){
                         tabIntComputer[i] = Integer.parseInt(Character.toString(strComputer.charAt(i)));
                     }
-                    String[] tabHint = attackerComputer.getInputChecker().askInputHint();
+                    String[] tabHint = inputChecker.checkInputHint();
 
                     //On vide strComputer afin de remettre la nouvelle combinaison
                     strComputer="";

@@ -5,11 +5,9 @@ import java.util.Arrays;
 public class ModeDuel extends PlayMode {
 
 
-    public static void main(String[] args) {
-        ModeDuel mDuel = new ModeDuel();
-        mDuel.askSecretNb();
-    }
-
+    /**
+     * askSecretNb() est une fonction héritée depuis la classe abstraite. Elle sert à interagir avec l'utilisateur en lui demandant de deviner dans les boucles.
+     */
     @Override
     protected void askSecretNb() {
         Human human = new Human();
@@ -21,6 +19,11 @@ public class ModeDuel extends PlayMode {
 
     }
 
+    /**
+     * guessInLoop() permet de juger si l'utilisateur ou l'ordinateur a gagné ou pas en passant plusieurs conditions. En cas de perte d'une partie, on repasse la devinette jusqu'à ce que 10 tours sont atteints.
+     * @param inputChecker La 1ère valeur d'entrée est un objet de type InputChecker appelé par un objet Human.
+     * @param tabReponse La 2ème valeur d'entrée est une liste de 4 nombres entiers qui représentent la réponse de l'arbitre générée par la méthode giveRandomNb().
+     */
     public void guessInLoop(InputChecker inputChecker, int[] tabReponse){
         boolean stopGame;
         int[] tabInput = new int[4];
@@ -29,7 +32,7 @@ public class ModeDuel extends PlayMode {
         int nbRound=0;
         do {
             if (nbRound < 10) {
-                strInput = inputChecker.askInput4Digit();
+                strInput = inputChecker.checkInput4Digit();
                 nbRound++;
                 strHint="";
                 for(int i=0; i<strInput.length() ; i++){

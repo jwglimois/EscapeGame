@@ -3,31 +3,41 @@ package com.oc.jiawen;
 public class Human extends Player{
 
 
-    public static void main(String[] args) {
+    /**
+     * replyNewPlayMode() permet de recupérer le playMode de l'utilisateur vérifié par la classe InputChecker.
+     * @return un nombre entier. 3 possibilités: 1, 2, et 3
+     */
+    public int replyNewPlayMode(){
 
-
-        Human h = new Human();
-        InputChecker ic = h.getInputChecker();
-
-
+        int newPlayMode = this.getInputChecker().checkInputNextPlayMode();
+        return newPlayMode;
     }
 
     /**
-     * l'utilisateur saisie 4 chiffres qui ont été vérifés par les méthodes de la classe InputChecker
-     * @param myString Le paramètre d'entrée est un String
+     * reply1or0() permet de recupérer la réponse de l'utilisateur en int.
+     * @return la valeur de retour est soit 1, soit 0 en Int.
+     */
+    public int reply1or0(){
+        int oneOrZero = this.getInputChecker().checkInputOneOrZero();
+        return oneOrZero;
+    }
+
+    /**
+     * replyFourDigit() permet à l'utilisateur de saisir 4 chiffres qui seront vérifés dans la classe InputChecker
      * @return int[] - On convertit le string et retourne un tableau int.
      */
 
-   public int[] replyFourDigit(String myString){
-       InputChecker ic = new InputChecker();
+   public int[] replyFourDigit(){
+       String inputStr = this.getInputChecker().checkInput4Digit();
        int[] tbInputIn = new int[4];
        for(int i = 0; i<tbInputIn.length ; i++){
-           tbInputIn[i] = Integer.parseInt(Character.toString(myString.charAt(i)));
+           tbInputIn[i] = Integer.parseInt(Character.toString(inputStr.charAt(i)));
        }
 
        return tbInputIn;
 
    }
+
 
 
 

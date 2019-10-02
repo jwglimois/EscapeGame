@@ -14,11 +14,18 @@ public abstract class PlayMode {
     private static Logger logger = LogManager.getLogger(PlayMode.class);
     private Human user = new Human();
 
+    /**
+     * getUser() est un Getter permettant de récupérer l'attribut user qui est un objet Human
+     * @return La valeur de retour est le type Human
+     */
     protected Human getUser() {
         return user;
     }
 
-
+    /**
+     * RunGame() comprend plusieurs fonctions qui permettent de parcourir le jeu depuis la saisie de modeDev jusau'au choix de re-jouer.
+     * @return La valeur de retour est un booléen.
+     */
     protected boolean runGame(){
         askDevMode();
         informGameRules();
@@ -26,6 +33,20 @@ public abstract class PlayMode {
         boolean reply = askPlayOrNot();
         return reply;
     }
+
+    /**
+     * display3PlayModes() est une fonction qui affiche le mode d'emploi de 3 modes de jeu.
+     */
+    protected void display3PlayModes(){
+        System.out.println("Choisissez votre mode de jeu.");
+        System.out.println("1 pour Mode Challenger. C'est-à-dire que l'utilisateur est l'attaquant, et la machine est le défenseur.");
+        System.out.println("2 pour Mode Défenseur. C'est-à-dire que l'utilisateur est le défenseur, et la machine est l'attaquant'.");
+        System.out.println("3 pour Mode Duel. C'est-à-dire que l'utilisateur et la machine jouent tour à tour'.");
+    }
+
+    /**
+     * informGameRules() affiche la régle du jeu: la saisie de 4 chiffres et 10 fois d'essai.
+     */
     protected void informGameRules(){
         System.out.println("Devinez la combinaison secréte en 4 chiffres. 10 fois d'essai possible.");
     }
@@ -33,7 +54,7 @@ public abstract class PlayMode {
     protected abstract void askSecretNb();
 
     /**
-     * L'utilisateur doit décider s'il veut activer le mode Développeur ou pas
+     * askDevMode() permet à l'utilisateur de décider s'il veut activer le mode Développeur ou pas.
      */
     protected void askDevMode(){
         // Initier notre paramétrage modeDev = true
@@ -43,7 +64,7 @@ public abstract class PlayMode {
         System.out.print("Pour activer le mode Développeur.");
 
         // Pour modifier le paramétrage du modeDev, l'utilisateur saisit 1 ou les autres réponses
-        int isDevInt = this.getUser().getInputChecker().checkInputOneOrZero();
+        int isDevInt = this.getUser().reply1or0();
 
         //Modifier config.properties avec le modeDev saisie par l'utilisateur
         updateModeDev(isDevInt);
@@ -53,7 +74,7 @@ public abstract class PlayMode {
     }
 
     /**
-     * On met les paramétrages initiaux dans config.properties.
+     * initializeProperties() met les paramétrages initiaux dans config.properties.
      */
     protected void initializeProperties(){
         Properties properties = new Properties();
@@ -79,7 +100,8 @@ public abstract class PlayMode {
     }
 
     /**
-     * l'utilisateur met à jour le modeDev dans le ficher config.properties
+     * updateModeDev() permet à l'utilisateur de mettre à jour le modeDev dans le ficher config.properties
+     * @param  isDevInt la valeur d'entrée est un nombre entier qui représente 1 (activer le mode Dev) ou 0 (désactiver le mode Dev).
      */
     protected void updateModeDev(int isDevInt){
         Boolean modeDevBool = (isDevInt == 1);
@@ -109,7 +131,7 @@ public abstract class PlayMode {
     }
 
     /**
-     * On affiche tous les paramétrages indiqués dans config.properties.
+     * displayProperties() permet d'afficher tous les paramétrages indiqués dans config.properties.
      */
     protected void displayProperties(){
         try {
@@ -133,12 +155,11 @@ public abstract class PlayMode {
 
     /**
      * Demander à l'utilisateur s'il veut encore jouer encore ou pas. 1 pour Oui et 0 pour Non.
+     * @return La valeur de retour est un booléen qui réprésente si l'utilisateur veut rejouer (true) ou non (false).
      */
     protected boolean askPlayOrNot(){
-        Human utilisateur = this.getUser();
         System.out.println("Voulez-vous jouer encore? ");
-        InputChecker myInputChecker = utilisateur.getInputChecker();
-        int reply = myInputChecker.checkInputOneOrZero();
+        int reply = this.getUser().reply1or0();
         if(reply==1){
             System.out.println("Ok, c'est parti, notre nouveau tour!");
             return true;
