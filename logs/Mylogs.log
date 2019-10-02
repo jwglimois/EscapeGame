@@ -1,6 +1,14 @@
-[TRACE] 2019-09-27 17:45:52.573 [main] Log4jDriver - This is a trace message.
-[DEBUG] 2019-09-27 17:45:52.585 [main] Log4jDriver - This is a debug message.
-[INFO ] 2019-09-27 17:45:52.585 [main] Log4jDriver - This is information message.
-[WARN ] 2019-09-27 17:45:52.585 [main] Log4jDriver - This is a warning message.
-[ERROR] 2019-09-27 17:45:52.585 [main] Log4jDriver - This is an error message.
-[FATAL] 2019-09-27 17:45:52.585 [main] Log4jDriver - This is a fatal message.
+[ERROR] 2019-10-02 10:23:57.030 [main] InputChecker - C'est un message d'erreur!
+java.lang.NumberFormatException: For input string: "j"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:68) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:658) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:776) ~[?:?]
+	at com.oc.jiawen.InputChecker.nbStringConvertToInt(InputChecker.java:57) [classes/:?]
+	at com.oc.jiawen.InputChecker.main(InputChecker.java:15) [classes/:?]
+[ERROR] 2019-10-02 10:52:35.715 [main] InputChecker - Vous avez saisi IOSeul les chiffres entiers sont acceptés!!
+[ERROR] 2019-10-02 11:10:33.515 [main] InputChecker - Vous avez saisi '*'. Seul les chiffres entiers sont acceptés!!
+[ERROR] 2019-10-02 13:35:43.226 [main] ModeDefender - Vous avez saisi plus ou moin de 4 caractères.
+[ERROR] 2019-10-02 13:35:53.638 [main] ModeDefender - Vous avez saisi plus ou moin de 4 caractères.
+[ERROR] 2019-10-02 13:36:06.322 [main] ModeDefender - Vous avez saisi plus ou moin de 4 caractères.
+[ERROR] 2019-10-02 13:36:14.888 [main] ModeDefender - Vous avez saisi plus ou moin de 4 caractères.
+[ERROR] 2019-10-02 13:36:16.982 [main] ModeDefender - Erreur!! Vous avez saisi les caractères non autorisés

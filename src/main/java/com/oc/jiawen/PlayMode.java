@@ -1,7 +1,9 @@
 package com.oc.jiawen;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.*;
-import java.util.InputMismatchException;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -9,6 +11,7 @@ import static java.lang.String.valueOf;
 
 public abstract class PlayMode {
 
+    private static Logger logger = LogManager.getLogger(PlayMode.class);
     private Human user = new Human();
 
     protected Human getUser() {
@@ -30,67 +33,23 @@ public abstract class PlayMode {
     protected abstract void askSecretNb();
 
     /**
-     * Vérifier si la saisie de l'utilisateur est bien 4 nombres entiers.
-     * @return Si ok, on convertir notre chiffre en String
-     */
-    protected String askInput4Digit(){
-        Scanner sc = new Scanner(System.in);
-        //Vérifier si la taille de saisie est bien 4
-        boolean is4Digit;
-        int inputInt=0;
-        String inputStr = "";
-        do{
-            System.out.println("Saissisez un nombre secrét de 4 chiffres");
-            if (sc.hasNextInt()) {
-                inputInt = sc.nextInt();
-                inputStr=String.valueOf(inputInt);
-                if(inputStr.length()==4){
-                    is4Digit = true;
-                }else{
-                    System.out.println("Vous avez saisi plus ou moins de 4 chiffres.");
-                    is4Digit = false;
-                }
-            } else {
-                System.out.println("Erreur. On ne prend pas compte de caractères!!");
-                is4Digit = false;
-                sc.next();
-            }
-        } while (!(is4Digit));
-        return inputStr;
-    }
-
-    /**
      * L'utilisateur doit décider s'il veut activer le mode Développeur ou pas
-     *
      */
     protected void askDevMode(){
         // Initier notre paramétrage modeDev = true
         initializeProperties();
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("Pour activer le mode Développeur, tappez 1, sinon d'autres chiffres");
+        System.out.print("Pour activer le mode Développeur.");
 
         // Pour modifier le paramétrage du modeDev, l'utilisateur saisit 1 ou les autres réponses
-        int isDevInt;
-        try{
-            isDevInt=sc.nextInt();
-            String isDevString;
-            if(isDevInt!=1){
-                isDevString = "false";
-            }else {
-                isDevString="true";
-            }
+        int isDevInt = this.getUser().getInputChecker().checkInputOneOrZero();
 
-            //Modifier config.properties avec le modeDev saisie par l'utilisateur
-            updateModeDev(isDevString);
+        //Modifier config.properties avec le modeDev saisie par l'utilisateur
+        updateModeDev(isDevInt);
 
-            //afficher tous nos paramétrages
-            displayProperties();
-        }catch(InputMismatchException e){
-            System.out.println("Oups, vous ne pouvez que saisir les chiffres entiers entre 0 et 9");
-            System.exit(0);
-        }
-
+        //afficher tous nos paramétrages
+        displayProperties();
     }
 
     /**
@@ -122,8 +81,8 @@ public abstract class PlayMode {
     /**
      * l'utilisateur met à jour le modeDev dans le ficher config.properties
      */
-    protected void updateModeDev(String modeDevString){
-        Boolean modeDevBool = Boolean.valueOf(modeDevString);
+    protected void updateModeDev(int isDevInt){
+        Boolean modeDevBool = (isDevInt == 1);
         Properties props = new Properties();
         FileInputStream in;
         try {
@@ -131,9 +90,9 @@ public abstract class PlayMode {
             props.load(in);
             in.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Oops, on n'arrive pas à trouver le fichier config.properties");
+            logger.error("Oops, on n'arrive pas à trouver le fichier config.properties");
         } catch (IOException e) {
-            System.out.println("Oops, on n'arrive pas à télécharger le fichier config.properties!");
+            logger.error("Oops, on n'arrive pas à télécharger le fichier config.properties!");
         }
 
         FileOutputStream out;
@@ -143,9 +102,9 @@ public abstract class PlayMode {
             props.store(out, null);
             out.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Oops, on n'arrive pas à trouver le fichier config.properties");
+            logger.error("Oops, on n'arrive pas à trouver le fichier config.properties");
         } catch (IOException e) {
-            System.out.println("Oops, on n'arrive pas à télécharger le fichier config.properties!");
+            logger.error("Oops, on n'arrive pas à télécharger le fichier config.properties!");
         }
     }
 
@@ -166,9 +125,9 @@ public abstract class PlayMode {
             System.out.println("Nombre de chiffres de la combinaison: " +properties.getProperty("nbDigit"));
             System.out.println("Nombre d'essais du jeu: " + properties.getProperty("nbRound"));
         } catch (FileNotFoundException e) {
-            System.out.println("Oops, on n'arrive pas à trouver le fichier config.properties");
+            logger.error("Oops, on n'arrive pas à trouver le fichier config.properties");
         } catch (IOException e) {
-            System.out.println("Oops, on n'arrive pas à télécharger le fichier config.properties!");
+            logger.error("Oops, on n'arrive pas à télécharger le fichier config.properties!");
         }
     }
 

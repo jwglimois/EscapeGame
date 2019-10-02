@@ -5,19 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InputCheckerTest {
 
-
-    @Test
-    void Given_nbString_IfSucceedConvertToInt_ThenGetTrue() {
-        InputChecker inputChecker = new InputChecker();
-        assertTrue(inputChecker.nbStringConvertToInt("1234"));
-    }
-
-    @Test
-    void Given_nbStr_WhenConvertToTabInt_ThenGetTrue() {
-        InputChecker inputChecker = new InputChecker();
-        assertTrue(inputChecker.nbStrConvertToTabInt("1234").getClass().isArray());
-    }
-
     @Test
     void Given_InputAttacker_Equals_InputDefender_ThenGetStringEven() {
         InputChecker inputChecker = new InputChecker();

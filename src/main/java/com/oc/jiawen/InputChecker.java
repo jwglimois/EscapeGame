@@ -1,44 +1,50 @@
 package com.oc.jiawen;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Scanner;
 
 public class InputChecker {
 
+    private static Logger logger = LogManager.getLogger(InputChecker.class);
+
     public static void main(String[] args) {
 
         InputChecker ic = new InputChecker();
-        int monChiffre = ic.checkInputNextPlayMode();
-        System.out.println("Mon next mode est :"+ monChiffre);
-    }
 
-
-    /**
-     * Vérifier si les chiffres saisies sont bien en nombre entier.
-     * @param nbStr String
-     * @return boolean
-     */
-    public boolean nbStringConvertToInt(String nbStr){
-        try{
-            int inputInt = Integer.parseInt(nbStr);
-            return inputInt > 0;
-        }catch(NumberFormatException e){
-            System.out.println("Seul les chiffres entiers sont acceptés!!");
-            return false;
-        }
     }
 
     /**
-     * Retourner les chiffresString en un tableau de nombres entiers.
-     * @param nbStr String
-     * @return int[]
+     * Vérifier si la saisie de l'utilisateur est bien 4 nombres entiers.
+     * @return Si ok, on convertir notre chiffre en String
      */
-    public int[] nbStrConvertToTabInt(String nbStr) {
-        int[] tabInputInt = new int[nbStr.length()];
-        for(int i=0; i<nbStr.length();i++){
-            tabInputInt[i]=Integer.parseInt(Character.toString(nbStr.charAt(i)));
-        }
-        return tabInputInt;
+    protected String askInput4Digit(){
+        Scanner sc = new Scanner(System.in);
+        //Vérifier si la taille de saisie est bien 4
+        boolean is4Digit;
+        int inputInt=0;
+        String inputStr = "";
+        do{
+            System.out.println("Saissisez un nombre secrét de 4 chiffres");
+            if (sc.hasNextInt()) {
+                inputInt = sc.nextInt();
+                inputStr=String.valueOf(inputInt);
+                if(inputStr.length()==4){
+                    is4Digit = true;
+                }else{
+                    logger.error("Vous avez saisi une combinaison '" + inputStr + "', elle compose > ou < 4 chiffres.");
+                    is4Digit = false;
+                }
+            } else {
+                logger.error("Vous avez saisi une combinaison '" + inputStr + "', ce qui ne doit pas être caractères!!");
+                is4Digit = false;
+                sc.next();
+            }
+        } while (!(is4Digit));
+        return inputStr;
     }
+
 
     /**
      * Comparer 2 chiffres entiers puis donner les indices pour la devinette.
@@ -75,10 +81,42 @@ public class InputChecker {
             nbInt = Integer.parseInt(nbStr);
             return nbInt;
         } catch (NumberFormatException e) {
-            System.out.println("Erreur de convertir une chaine de caractères en nombre entier!!");
+            logger.error("Vous avez saisi '" + nbStr + "' . Ce qui n'est pas un nombre entier!!");
             return nbInt=0;
         }
 
+    }
+
+    public String[] askInputHint(){
+        Scanner input = new Scanner(System.in);
+        String[] tabHint = new String[4];
+        boolean isValid;
+        String hint="";
+        do{
+            System.out.println("Saisissez 4 symboles. 3 possibilités: '+' , '-', et '='.");
+            hint = input.next();
+            int goodSymbols=0;
+            if(hint.length() == 4){
+                for (int i = 0; i < hint.length(); i++) {
+                    tabHint[i] = String.valueOf(hint.charAt(i));
+                    if( tabHint[i].equals("=") || tabHint[i].contains("+") || tabHint[i].contains("-")) {
+                        goodSymbols++;
+                    }
+                }
+                if(goodSymbols==4){
+                    isValid = true;
+                }else{
+                    logger.error("Erreur!! Vous avez saisi les caractères non autorisés");
+                    isValid = false;
+                }
+            }else{
+                logger.error("Vous avez saisi plus ou moin de 4 caractères.");
+                isValid = false;
+            }
+
+        }while(!(isValid));
+
+        return tabHint;
     }
 
     /**
@@ -101,7 +139,7 @@ public class InputChecker {
                 if(nbInt<=3 && nbInt>=1){
                     isNb=true;
                 }else{
-                    System.out.println("Votre saisie n'entre pas dans les réponses possibles (1,2, ou 3).");
+                    logger.error("Votre saisie '"+nbInt+ "' n'entre pas dans les réponses possibles (1,2, ou 3).");
                     isNb=false;
                 }
             }
@@ -109,14 +147,14 @@ public class InputChecker {
         return nbInt;
     }
 
-    public int compareInputHint(String symbole, int nbIntComputer){
+    public int compareInputHint(String symbole, int nbAComparer){
         if(symbole.equals("+")){
-            nbIntComputer++;
+            nbAComparer++;
         }
         if(symbole.equals("-")) {
-            nbIntComputer--;
+            nbAComparer--;
         }
-        return nbIntComputer;
+        return nbAComparer;
     }
 
 

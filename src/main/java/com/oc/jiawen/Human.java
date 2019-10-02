@@ -10,12 +10,6 @@ public class Human extends Player{
         InputChecker ic = h.getInputChecker();
 
 
-        /*
-        InputChecker ic= new InputChecker();
-        String result = ic.compareInput(2,1);
-        System.out.println("Mon resultat est :"+ result);
-
-         */
     }
 
     /**
@@ -26,18 +20,12 @@ public class Human extends Player{
 
    public int[] replyFourDigit(String myString){
        InputChecker ic = new InputChecker();
-
-       //Vérifier si on peut convertir les chiffresString en int
-       //Si ok, on met les chiffres dans un tableau
        int[] tbInputIn = new int[4];
-       if(ic.nbStringConvertToInt(myString)){
-           tbInputIn=ic.nbStrConvertToTabInt(myString);
-       }else{
-           System.out.println("Erreur de mettre les chiffres dans le tableau!");
+       for(int i = 0; i<tbInputIn.length ; i++){
+           tbInputIn[i] = Integer.parseInt(Character.toString(myString.charAt(i)));
        }
 
        return tbInputIn;
-
 
    }
 

@@ -1,13 +1,10 @@
 package com.oc.jiawen;
 
-import java.util.Scanner;
-
 public class ModeDefender extends PlayMode {
 
     public static void main(String[] args) {
         ModeDefender md= new ModeDefender();
         md.askSecretNb();
-
     }
 
     @Override
@@ -15,7 +12,7 @@ public class ModeDefender extends PlayMode {
         Human defenderHuman = new Human();
         Computer attackerComputer = new Computer();
         InputChecker inputChecker = defenderHuman.getInputChecker();
-        String inputStr = this.askInput4Digit();
+        String inputStr = inputChecker.askInput4Digit();
         this.guessInLoop(attackerComputer, inputStr, inputChecker);
 
     }
@@ -37,7 +34,7 @@ public class ModeDefender extends PlayMode {
                     for(int i = 0; i<strComputer.length() ; i++){
                         tabIntComputer[i] = Integer.parseInt(Character.toString(strComputer.charAt(i)));
                     }
-                    String[] tabHint = this.askInputHint();
+                    String[] tabHint = attackerComputer.getInputChecker().askInputHint();
 
                     //On vide strComputer afin de remettre la nouvelle combinaison
                     strComputer="";
@@ -65,52 +62,21 @@ public class ModeDefender extends PlayMode {
                 if(confirmWin ==1){
                     stopGame=true;
                 }else{
-                    System.out.println("Ah bon? Tu n'as pas triché??");
+                    System.out.println("[Machine] : Ah bon? Tu n'as pas triché??");
                     stopGame=true;
                 }
                 machineGain = true;
             }
         }while(!(stopGame));
 
-        System.out.println("La bonne réponse est "+ inputStr + ".");
+        System.out.println("[Arbitre] : La bonne réponse est "+ inputStr + ".");
 
         if(machineGain){
-            System.out.println("La machine a gagné en " + nbRound + " tours.");
+            System.out.println("[Arbitre] : La machine a gagné en " + nbRound + " tours.");
         }
 
-
     }
 
-    public String[] askInputHint(){
-        Scanner input = new Scanner(System.in);
-        String[] tabHint = new String[4];
-        boolean isValid;
-        String hint="";
-        do{
-            System.out.println("Saisissez 4 symboles. 3 possibilités: '+' , '-', et '='.");
-            hint = input.next();
-            int goodSymbols=0;
-            if(hint.length() == 4){
-                for (int i = 0; i < hint.length(); i++) {
-                    tabHint[i] = String.valueOf(hint.charAt(i));
-                    if( tabHint[i].equals("=") || tabHint[i].contains("+") || tabHint[i].contains("-")) {
-                        goodSymbols++;
-                    }
-                }
-                if(goodSymbols==4){
-                    isValid = true;
-                }else{
-                    System.out.println("Erreur!! Vous avez saisi les caractères non autorisés");
-                    isValid = false;
-                }
-            }else{
-                System.out.println("Vous avez saisi plus ou moin de 4 caractères.");
-                isValid = false;
-            }
 
-        }while(!(isValid));
-
-        return tabHint;
-    }
 
 }

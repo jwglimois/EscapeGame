@@ -1,0 +1,6 @@
+[TRACE] 2019-10-01 13:08:44.893 [main] Log4jDriver - This is a trace message.
+[DEBUG] 2019-10-01 13:08:44.910 [main] Log4jDriver - This is a debug message.
+[INFO ] 2019-10-01 13:08:44.911 [main] Log4jDriver - This is information message.
+[WARN ] 2019-10-01 13:08:44.911 [main] Log4jDriver - This is a warning message.
+[ERROR] 2019-10-01 13:08:44.911 [main] Log4jDriver - This is an error message.
+[FATAL] 2019-10-01 13:08:44.911 [main] Log4jDriver - This is a fatal message.

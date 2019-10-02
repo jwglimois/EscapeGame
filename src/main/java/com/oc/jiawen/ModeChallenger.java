@@ -4,14 +4,13 @@ import java.util.Arrays;
 
 public class ModeChallenger extends PlayMode {
     public static void main(String[] args) {
-/*
+
         ModeChallenger mChallenger = new ModeChallenger();
         mChallenger.askSecretNb();
 
- */
+
 
     }
-
 
 
     @Override
@@ -28,10 +27,11 @@ public class ModeChallenger extends PlayMode {
 
     }
 
+
     public void guessInLoop(Human attackerHuman, InputChecker inputChecker,  String hint, int nbRound,int[] tabRandom){
         do {
             //Vérifier si la taille de saisie est bien 4
-            String inputStr = this.askInput4Digit();
+            String inputStr = inputChecker.askInput4Digit();
 
             int[] tabInt = attackerHuman.replyFourDigit(inputStr);
             String[] tabHint = new String[4];
@@ -45,15 +45,15 @@ public class ModeChallenger extends PlayMode {
                 hint="";
             }
 
-            System.out.println("Proposition : " + inputStr + " -> Réponse: " + Arrays.toString(tabHint));
+            System.out.println("[Arbitre] : Votre proposition : " + inputStr + " -> C'est faux! Voici l'indice: " + Arrays.toString(tabHint));
             nbRound++;
         }while(!hint.contains("====") && nbRound<10);
 
         if(hint.equals("====")){
-            System.out.println("Bravo! Vous avez gagné en "+ nbRound + " tour(s)." );
+            System.out.println("[Arbitre] : Bravo! Vous avez gagné en "+ nbRound + " tour(s)." );
         }else{
             if(nbRound==10){
-                System.out.println("Dommage!! Vous avez perdu!");
+                System.out.println("[Arbitre] : Dommage!! Vous avez perdu!");
             }
         }
     }

@@ -19,7 +19,7 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="myLogs" level="trace" additivity="true">
+        <Logger name="com.oc.jiawen" level="trace" additivity="true">
             <appender-ref ref="fileLogger" level="trace" />
         </Logger>
         <Root level="trace" additivity="false">
