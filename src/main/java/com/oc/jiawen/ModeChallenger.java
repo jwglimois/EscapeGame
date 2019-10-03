@@ -9,8 +9,8 @@ public class ModeChallenger extends PlayMode {
      */
     @Override
     public void askSecretNb() {
-        Human attackerHuman = new Human();
-        Computer defenderComputer = new Computer();
+        Human attackerHuman = this.getUser();
+        Computer defenderComputer = this.getMachine();
         InputChecker inputChecker = attackerHuman.getInputChecker();
 
         String hint="";

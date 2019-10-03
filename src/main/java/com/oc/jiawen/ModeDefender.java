@@ -7,11 +7,11 @@ public class ModeDefender extends PlayMode {
      */
     @Override
     protected void askSecretNb() {
-        Human defenderHuman = new Human();
+        Human defenderHuman = this.getUser();
         InputChecker inputChecker = defenderHuman.getInputChecker();
         String inputStr = inputChecker.checkInput4Digit();
 
-        Computer attackerComputer = new Computer();
+        Computer attackerComputer = this.getMachine();
 
         this.guessInLoop(inputChecker , inputStr,  attackerComputer );
 

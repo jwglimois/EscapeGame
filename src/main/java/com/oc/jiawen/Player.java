@@ -2,6 +2,9 @@ package com.oc.jiawen;
 
 public abstract class Player {
 
+    /**
+     * l'utilisatation des objets de type InputChecker est encapsulée dans la classe Player.
+     */
     private InputChecker inputChecker = new InputChecker();
 
     /**

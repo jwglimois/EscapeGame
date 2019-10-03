@@ -11,8 +11,20 @@ import static java.lang.String.valueOf;
 
 public abstract class PlayMode {
 
+    /**
+     * On utilise un objet de Logger pour générer les logs des fonctions de la classe InputChecker.
+     */
     private static Logger logger = LogManager.getLogger(PlayMode.class);
+
+    /**
+     * L'objet Human est encapsulé et ne peut être accédé que par son getter.
+     */
     private Human user = new Human();
+
+    /**
+     * L'objet Computer est encapsulé et ne peut être accédé que par son getter.
+     */
+    private Computer machine = new Computer();
 
     /**
      * getUser() est un Getter permettant de récupérer l'attribut user qui est un objet Human
@@ -21,6 +33,12 @@ public abstract class PlayMode {
     protected Human getUser() {
         return user;
     }
+
+    /**
+     * getMachine() est un Getter permettant de récupérer l'attribut user qui est un objet Computer
+     * @return La valeur de retour est le type Computer
+     */
+    protected Computer getMachine() {return machine;}
 
     /**
      * RunGame() comprend plusieurs fonctions qui permettent de parcourir le jeu depuis la saisie de modeDev jusau'au choix de re-jouer.

@@ -7,8 +7,10 @@ import java.util.Scanner;
 
 public class InputChecker {
 
+    /**
+     * On utilise un objet de Logger pour générer les logs des fonctions de la classe InputChecker.
+     */
     private static Logger logger = LogManager.getLogger(InputChecker.class);
-
 
     /**
      * checkInputNextPlayMode() permert de vérifier si la saisie de l'utilisateur est bien 1 ou 2 ou 3.
@@ -16,7 +18,7 @@ public class InputChecker {
      */
     public int checkInputNextPlayMode(){
         int nbInt=0;
-        boolean isNb = true;
+        boolean isNb;
         Scanner input = new Scanner(System.in);
 
         do{

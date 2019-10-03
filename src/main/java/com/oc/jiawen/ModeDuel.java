@@ -10,8 +10,8 @@ public class ModeDuel extends PlayMode {
      */
     @Override
     protected void askSecretNb() {
-        Human human = new Human();
-        Computer computer = new Computer();
+        Human human = this.getUser();
+        Computer computer = this.getMachine();
         InputChecker inputChecker = human.getInputChecker();
         System.out.println("[Arbitre]: Vous ête en Mode Duel. Le joueur humain commence à deviner la combinaison secréte.");
         int[] tabReponse = computer.giveRandomNb();

@@ -9,8 +9,8 @@
         <module name="EscapeGame" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="11">
-      <module name="EscapeGame" target="11" />
+    <bytecodeTargetLevel target="12">
+      <module name="EscapeGame" target="12" />
     </bytecodeTargetLevel>
   </component>
 </project>

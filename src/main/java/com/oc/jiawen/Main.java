@@ -13,11 +13,12 @@ public class Main {
         Human human = new Human();
         int newPlayMode;
         boolean playAgain;
+        PlayMode arbitre = new ModeChallenger();
         ModeChallenger mChallenger = new ModeChallenger();
         ModeDefender mDefender = new ModeDefender();
         ModeDuel mDuel = new ModeDuel();
         do {
-            mChallenger.display3PlayModes();
+            arbitre.display3PlayModes();
             newPlayMode = human.replyNewPlayMode();
 
             if (newPlayMode == 1) {
