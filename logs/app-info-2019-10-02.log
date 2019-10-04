@@ -1,0 +1,27 @@
+[ERROR] 2019-10-02 10:23:57.030 [main] InputChecker - C'est un message d'erreur!
+java.lang.NumberFormatException: For input string: "j"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:68) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:658) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:776) ~[?:?]
+	at com.oc.jiawen.InputChecker.nbStringConvertToInt(InputChecker.java:57) [classes/:?]
+	at com.oc.jiawen.InputChecker.main(InputChecker.java:15) [classes/:?]
+[ERROR] 2019-10-02 10:52:35.715 [main] InputChecker - Vous avez saisi IOSeul les chiffres entiers sont acceptés!!
+[ERROR] 2019-10-02 11:10:33.515 [main] InputChecker - Vous avez saisi '*'. Seul les chiffres entiers sont acceptés!!
+[ERROR] 2019-10-02 13:35:43.226 [main] ModeDefender - Vous avez saisi plus ou moin de 4 caractères.
+[ERROR] 2019-10-02 13:35:53.638 [main] ModeDefender - Vous avez saisi plus ou moin de 4 caractères.
+[ERROR] 2019-10-02 13:36:06.322 [main] ModeDefender - Vous avez saisi plus ou moin de 4 caractères.
+[ERROR] 2019-10-02 13:36:14.888 [main] ModeDefender - Vous avez saisi plus ou moin de 4 caractères.
+[ERROR] 2019-10-02 13:36:16.982 [main] ModeDefender - Erreur!! Vous avez saisi les caractères non autorisés
+[ERROR] 2019-10-02 13:58:43.330 [main] InputChecker - Votre saisie '45' n'entre pas dans les réponses possibles (1,2, ou 3).
+[ERROR] 2019-10-02 13:59:53.321 [main] InputChecker - Vous avez saisi une combinaison '66666', elle compose > ou < 4 chiffres.
+[ERROR] 2019-10-02 14:00:05.020 [main] InputChecker - Vous avez saisi une combinaison '66666', ce qui ne doit pas être caractères!!
+[ERROR] 2019-10-02 14:03:17.198 [main] InputChecker - Vous avez saisi une combinaison '66666', elle compose > ou < 4 chiffres.
+[ERROR] 2019-10-02 14:03:24.157 [main] InputChecker - Vous avez saisi une combinaison '66666', ce qui ne doit pas être caractères!!
+[ERROR] 2019-10-02 14:05:23.789 [main] InputChecker - Vous avez saisi une combinaison '66666', elle compose > ou < 4 chiffres.
+[ERROR] 2019-10-02 14:05:27.972 [main] InputChecker - Vous avez saisi une combinaison 'jiaw', ce qui ne doit pas être caractères!!
+[ERROR] 2019-10-02 14:06:30.600 [main] InputChecker - Vous avez saisi une combinaison '66666', elle compose > ou < 4 chiffres.
+[ERROR] 2019-10-02 14:06:33.225 [main] InputChecker - Vous avez saisi une combinaison 'jiaw', ce qui ne doit pas être caractères!!
+[ERROR] 2019-10-02 14:52:52.948 [main] InputChecker - Vous avez saisi une combinaison '38345', elle compose > ou < 4 chiffres.
+[ERROR] 2019-10-02 14:57:04.344 [main] InputChecker - Vous avez saisi une combinaison '360', elle compose > ou < 4 chiffres.
+[ERROR] 2019-10-02 15:05:30.506 [main] InputChecker - Vous avez saisi une combinaison 'jiaw', ce qui ne doit pas être caractères!!
+[ERROR] 2019-10-02 16:02:15.769 [main] InputChecker - Erreur!! Vous avez saisi les caractères non autorisés
