@@ -12,6 +12,7 @@ public class InputChecker {
      */
     private static Logger logger = LogManager.getLogger(InputChecker.class);
 
+
     /**
      * checkInputNextPlayMode() permert de vérifier si la saisie de l'utilisateur est bien 1 ou 2 ou 3.
      * @return La valeur de retour doit être un entier. Seulement 3 possibilité: 1, 2, ou 3.

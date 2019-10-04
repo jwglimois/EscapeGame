@@ -44,5 +44,4 @@ class InputCheckerTest {
         assertEquals(2, inputChecker.compareInputHint("=", 2));
     }
 
-
 }
