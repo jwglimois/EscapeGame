@@ -1,4 +1,4 @@
-# Projet Title: EscapeGame
+# Project Title: EscapeGame
 
 EscapeGame is a logical game. The goal is to find the secret number. The player can have up to 10 rounds. The player begins by choosing 3 play modes: Challenger, Defender, and Duel.
 
