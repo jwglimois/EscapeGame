@@ -53,7 +53,7 @@ To deploy this game on a live system, make sure to have JDK installed and enviro
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [Junit5](https://junit.org/junit5/) - Used to generate unit tests
 * [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) - Used to generate logs
-* [JavaDoc] (https://docs.oracle.com/javase/7/docs/api/) - Documentation generator to describe each class
+* [JavaDoc](https://docs.oracle.com/javase/7/docs/api/) - Documentation generator to describe each class
 
 
 ## Versioning
