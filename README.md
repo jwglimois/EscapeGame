@@ -1,6 +1,6 @@
 # Project Title: EscapeGame
 
-EscapeGame is a logical game. The goal is to find the secret number. The player can have up to 10 rounds. The player begins by choosing 3 play modes: Challenger, Defender, and Duel.
+EscapeGame is a logical game. The goal is to find the secret 4-digit number. The player can have up to 10 rounds. The player begins by choosing 3 play modes: Challenger, Defender, and Duel.
 
 * Mode Challenger: 
     The computer sets a 4-digit number and asks the player to guess.
@@ -16,7 +16,7 @@ EscapeGame is a logical game. The goal is to find the secret number. The player 
     The player gives a hint to the computer with the same symbols above.
 
 * Mode Duel: 
-    The player and the computer takes turns to play. The first one to find the secret number wins. 
+    The player and the computer take turns to play. The first one to find the secret number wins. 
 
 ## Getting Started
 
@@ -67,4 +67,4 @@ We use [Git](https://git-scm.com/) for versioning. For the version available, se
 
 ## License
 
-This game is an open source projet without license.
+This game is an open source project without license.
