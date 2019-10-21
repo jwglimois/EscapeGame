@@ -20,7 +20,7 @@ EscapeGame is a logical game. The goal is to find the secret 4-digit number. The
 
 ## Getting Started
 
-The game works only with Windows Console. To lanch the game, you can press Windows Key + R to open the Command Prompt (cmd) and type "java -jar YourPathWhereYouStoreTheGame" as the example as follows. Then, presse "Enter". 
+The game works only with Windows Console. To lanch the game, you can press Windows Key + R to open the Command Prompt (cmd) and type "java -jar YourPathWhereYouStoreTheGame" as the example as follows. Then, press "Enter". 
 
 ```
 java -jar C:\Users\Jia-Wen\Desktop\EscapeGame.jar
@@ -28,7 +28,9 @@ java -jar C:\Users\Jia-Wen\Desktop\EscapeGame.jar
 
 ### Prerequisites
 
-To run a Java program in your Command Prompt, first, you need to have JDK (Java Development Toolkit) installed. You can download the last version on the website of Oracle: https://www.oracle.com/technetwork/java/javase/downloads/index.html. Secondly, you need to configurate your environment variable so that Command Prompt can find where JDK has been installed. You can refer to this web page for the configuration : https://javatutorial.net/set-java-home-windows-10
+To run a Java program in your Command Prompt, first, you need to have JDK (Java Development Toolkit) installed. You can download the last version on the website of Oracle: https://www.oracle.com/technetwork/java/javase/downloads/index.html. 
+
+Secondly, you need to configure your environment variable so that Command Prompt can find where JDK has been installed. You can refer to this web page for the configuration: https://javatutorial.net/set-java-home-windows-10
 
 Finally, for the quality of the game, we strongly recommand that you run the game with Windows 8 or 10. 
 
@@ -59,7 +61,7 @@ To deploy this game on a live system, make sure to have JDK installed and enviro
 ## Versioning
 
 Version 1.0 04/10/2019, in Paris
-We use [Git](https://git-scm.com/) for versioning. For the version available, see our last projet on: https://github.com/jwglimois/EscapeGame.
+We use [Git](https://git-scm.com/) for versioning. For the version available, see our last project on: https://github.com/jwglimois/EscapeGame.
 
 ## Author
 
